@@ -3,7 +3,7 @@
     <title>Mix2D</title>
     <script src="mix2d.js" type="text/javascript"></script>
   </head>
-  <body>
+  <body onload="update()">
     <form>
       <input type="text" id="funfunfun" value="x/50 + y/50" />
       <input type="button" onclick="update()" value="Update" />
@@ -11,8 +11,12 @@
     <canvas id="yeswecanvas" height=512 width=512 />
     <script type="text/javascript">
       function update(){
+        var v = document.getElementById("funfunfun").value;
+        var text = "var x=this.x;var y=this.y;return (" + v + ")";
+        var f = new Function(text);
         mix2d_draw("yeswecanvas", function(x, y) {
-            return eval(document.getElementById("funfunfun").value);
+            var t = {"x": x, "y": y};
+            return f.apply(t);
             });
       };
     </script>
