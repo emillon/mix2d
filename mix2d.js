@@ -1,9 +1,10 @@
 function mix2d_draw(id, f) {
-  var red    = [255, 0, 0];
-  var green  = [0, 255, 0];
-  var blue   = [0, 0, 255];
 
-  var colors = [red, green, blue];
+  var g1 = [100, 100, 100];
+  var g2 = [120, 120, 120];
+  var g3 = [140, 140, 140];
+
+  var colors = [g1, g2, g3];
   var canvas = document.getElementById(id);
   var ctx = canvas.getContext("2d");
   var data = ctx.getImageData(0, 0, canvas.width, canvas.height);
