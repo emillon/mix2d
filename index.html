@@ -10,11 +10,27 @@
     </form>
     <canvas id="yeswecanvas" height=512 width=512 />
     <script type="text/javascript">
+      function makeColorCanvasData(color) {
+        var canvas = document.createElement('canvas');
+        canvas.height = 512;
+        canvas.width  = 512;
+        var ctx = canvas.getContext("2d");
+        ctx.fillStyle = color;
+        ctx.fillRect(0, 0, canvas.height, canvas.width);
+        var data = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        return data;
+      }
+
+      var sources = [ makeColorCanvasData("#666")
+                    , makeColorCanvasData("#999")
+                    , makeColorCanvasData("#bbb")
+                    ];
+
       function update(){
         var v = document.getElementById("funfunfun").value;
         var text = "var x=this.x;var y=this.y;return (" + v + ")";
         var f = new Function(text);
-        mix2d_draw("yeswecanvas", function(x, y) {
+        mix2d_draw("yeswecanvas", sources, function(x, y) {
             var t = {"x": x, "y": y};
             return f.apply(t);
             });
