@@ -47,13 +47,17 @@
         lastupdate = new Date();
       };
       function tryupdate(){
-        try {
-          window.setTimeout(update, 50);
-        } catch (e) {
-          if (!(e instanceof SyntaxError)) {
-            throw (e);
+        window.setTimeout(
+          function () {
+            try {
+              update();
+            } catch (e) {
+              if (!(e instanceof SyntaxError)) {
+                throw (e);
+              }
+            }
           }
-        }
+          , 50);
       }
     </script>
   </body>
