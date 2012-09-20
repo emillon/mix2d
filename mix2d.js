@@ -1,3 +1,11 @@
+/* Copyright (c) 2012, Etienne Millon
+ *
+ * "THE BEER-WARE LICENSE" (Revision 42):
+ * <me@emillon.org> wrote this file. As long as you retain this notice you
+ * can do whatever you want with this stuff. If we meet some day, and you think
+ * this stuff is worth it, you can buy me a beer in return.
+ */
+
 function mix2d_draw(id, sources, f) {
   var canvas = document.getElementById(id);
   var ctx = canvas.getContext("2d");
