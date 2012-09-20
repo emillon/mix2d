@@ -5,7 +5,8 @@
   </head>
   <body>
     <form>
-      <input type="text" id="funfunfun" value="x/50 + y/50" onkeyup="tryupdate()" />
+      <input type="text" id="funfunfun" value="x + y" onkeyup="tryupdate()" />
+      <input type="text" id="scale" value="10" onkeyup="tryupdate()" />
       <input type="button" onclick="update()" value="Update" />
     </form>
     <canvas id="yeswecanvas" height=512 width=512 />
@@ -39,8 +40,10 @@
         var v = document.getElementById("funfunfun").value;
         var text = "var x=this.x;var y=this.y;return (" + v + ")";
         var f = new Function(text);
+        var scale = document.getElementById("scale").value;
+        scale = ~~scale;
         mix2d_draw("yeswecanvas", sources, function(x, y) {
-            var t = {"x": x, "y": y};
+            var t = {"x": x/scale, "y": y/scale};
             return f.apply(t);
             });
         lastupdate = new Date();
