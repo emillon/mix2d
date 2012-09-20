@@ -54,3 +54,20 @@ function fromImage(src, k) {
   };
   img.src = src;
 }
+
+function fromImages(srcs, k) {
+  var s = srcs;
+  var r = [];
+  function shiftNext () {
+    if (srcs.length == 0) {
+      k(r)
+    } else {
+      src = srcs.shift();
+      fromImage(src, function (d) {
+        r.push(d);
+        shiftNext();
+      });
+    }
+  }
+  shiftNext();
+}

@@ -18,23 +18,21 @@
                     ];
       update();
 
-      /* ex with pics */
+      /* with pics : */
+
       /*
-      var sources = [];
-      fromImage( "img1.jpg" , function (d) {
-        sources.push(d);
-        fromImage( "img2.jpg" , function (d) {
-          sources.push(d);
-          fromImage( "img3.jpg" , function (d) {
-            sources.push(d);
-            fromImage( "img4.jpg" , function (d) {
-              sources.push(d);
-              update();
-              })
-            })
-          })
-        });
-        */
+      var sources;
+      fromImages( [ "img1.jpg"
+                  , "img2.jpg"
+                  , "img3.jpg"
+                  , "img4.jpg"
+                  ]
+                , function (d) {
+                    sources = d;
+                    update();
+                  }
+                );
+      */
 
       function update(){
         var v = document.getElementById("funfunfun").value;
