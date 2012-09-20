@@ -3,28 +3,37 @@
     <title>Mix2D</title>
     <script src="mix2d.js" type="text/javascript"></script>
   </head>
-  <body onload="update()">
+  <body>
     <form>
       <input type="text" id="funfunfun" value="x/50 + y/50" onkeyup="tryupdate()" />
       <input type="button" onclick="update()" value="Update" />
     </form>
     <canvas id="yeswecanvas" height=512 width=512 />
     <script type="text/javascript">
-      function makeColorCanvasData(color) {
-        var canvas = document.createElement('canvas');
-        canvas.height = 512;
-        canvas.width  = 512;
-        var ctx = canvas.getContext("2d");
-        ctx.fillStyle = color;
-        ctx.fillRect(0, 0, canvas.height, canvas.width);
-        var data = ctx.getImageData(0, 0, canvas.width, canvas.height);
-        return data;
-      }
 
-      var sources = [ makeColorCanvasData("#666")
-                    , makeColorCanvasData("#999")
-                    , makeColorCanvasData("#bbb")
+      var sources = [ fromColor("indigo")
+                    , fromColor("blue")
+                    , fromColor("darkblue")
                     ];
+      update();
+
+      /* ex with pics */
+      /*
+      var sources = [];
+      fromImage( "img1.jpg" , function (d) {
+        sources.push(d);
+        fromImage( "img2.jpg" , function (d) {
+          sources.push(d);
+          fromImage( "img3.jpg" , function (d) {
+            sources.push(d);
+            fromImage( "img4.jpg" , function (d) {
+              sources.push(d);
+              update();
+              })
+            })
+          })
+        });
+        */
 
       function update(){
         var v = document.getElementById("funfunfun").value;
